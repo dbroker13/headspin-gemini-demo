@@ -8,7 +8,7 @@ import os
 API_KEY = os.environ["API_KEY"]
 api_token = API_KEY
 
-APPIUM = 'https://dev-us-sny-9.headspin.io:7028/v0/{api_token}/wd/hub'
+APPIUM = f'https://dev-us-sny-9.headspin.io:7028/v0/{api_token}/wd/hub'
 
 CAPS = {
     "deviceName": "Chromecast",
