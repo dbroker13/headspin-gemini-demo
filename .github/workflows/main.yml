@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: headspin run
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      # Runs a single command using the runners shell
+      - name: run appium test
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: python GeminiChromeCast.py
+
+      # Runs a set of commands using the runners shell
+      - name: run gemini analysis
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
+        run: python upload_file.py
+
+      - name: run update headspin session
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: python UpdateSession.py
+
+
+          
