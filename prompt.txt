@@ -1,0 +1,19 @@
+You are going to perform some analysis and find key areas which will be passed back in a parsable way.
+
+First can you give a one word description of the content that is being served. For example, news, sports, entertainment.
+
+Next if there are any ads that appear in the show please identify the ad and give the time stamps on all in an array. If you cannot identify the ad but believe it is an ad just enumerate the ad. For example [ad1: {startTime: 0:30, endTime: 0:55}]
+
+If there are any freezing or buffering please provide the time stamps of those as well.
+
+Lastly if there is any black screens that last longer than 1 seconds please specify that as well
+
+An example response would look like this
+
+{
+    "content": "news",
+    "ads": [{"ad1": {"startTime": "0:30", "endTime": "0:55"}}, {"tide": {"startTime:": "0:55", "endTime": "1:27"}}],
+    "buffering": [{"buffering1": {"startTime": "0:05", "endTime": "0:10"}}],
+    "freezing" : [],
+    "blackScreens": []
+}
