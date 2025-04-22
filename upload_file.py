@@ -14,6 +14,8 @@ WAIT_SECONDS = 30
 sessionFile = open("session_info.txt", "r")
 sessionID = sessionFile.read()
 
+#just wait for video to be available replace with better wait method
+time.sleep(15)
 downloadURL = f'https://api-dev.headspin.io/v0/sessions/{sessionID}.mp4'
 
 headers = {"Authorization": "Bearer " + api_token}
