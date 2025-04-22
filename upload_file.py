@@ -4,7 +4,7 @@ import time
 import os
 
 GEMINI_KEY = os.environ["GEMINI_KEY"]
-client = genai.Client(api_key="GEMINI_KEY")
+client = genai.Client(api_key=GEMINI_KEY)
 API_KEY = os.environ["API_KEY"]
 api_token = API_KEY
 
