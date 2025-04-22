@@ -1,9 +1,8 @@
 from appium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
+from appium.options.common.base import AppiumOptions
 
 API_KEY = os.environ["API_KEY"]
 api_token = API_KEY
@@ -22,13 +21,13 @@ CAPS = {
     "headspin:newCommandTimeout": 180,
     # "headspin:appiumVersion": "2.0.0",
 }
-
+options = AppiumOptions()
+options.load_capabilities(CAPS)
 driver = webdriver.Remote(
     command_executor=APPIUM,
-    desired_capabilities=CAPS
+    options=options
 )
 try:
-    wait = WebDriverWait(driver, 10)
     #driver.get('https://the-internet.herokuapp.com')
     #Tubi
     #//android.widget.TextView[@resource-id="intro"]
